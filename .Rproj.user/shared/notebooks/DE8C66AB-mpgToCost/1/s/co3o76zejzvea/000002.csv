@@ -1,0 +1,2 @@
+"0","df <- data.frame(matrix(nrow = length(engineType), ncol = 4 + length(mileRange)))"
+"0","colnames(df) <- c(""Model"", ""Purchase Price"",""MPG"", ""Cost Per Gallon"", paste0(as.character(mileRange), "" miles""))"

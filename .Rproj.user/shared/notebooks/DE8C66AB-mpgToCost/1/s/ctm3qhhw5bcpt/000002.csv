@@ -1,0 +1,4 @@
+"0","df$Model <- engineType"
+"0","df$`Purchase Price` <- baseCostDollars"
+"0","df$MPG <- mpg"
+"0","df$`Cost Per Gallon` <- costPerGallonOfFuel"

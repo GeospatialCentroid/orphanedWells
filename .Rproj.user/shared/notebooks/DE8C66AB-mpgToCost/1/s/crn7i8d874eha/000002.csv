@@ -1,0 +1,6 @@
+"0","# write a function"
+"0","calCost <- function(initialPrice, distance, mpg, fuelPrice){"
+"0","  cost <- initialPrice + (distance/mpg)*fuelPrice"
+"0","  cost <- round(cost, digits = 0)"
+"0","  return(cost)"
+"0","}"

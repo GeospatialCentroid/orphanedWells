@@ -1,0 +1,5 @@
+"0","engineType <- c(""V6 gas"", ""V8 gas"", ""V4 diesel"")"
+"0","baseCostDollars<- c(35195, 37965,40265)"
+"0","costPerGallonOfFuel <- c(3.696, 3.696, 3.411)"
+"0","mpg <- c(17,15,30)"
+"0","mileRange <- seq(from = 15000, to = 210000, by = 15000)"
