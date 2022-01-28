@@ -1,8 +1,0 @@
-"0","for(i in seq_along(engineType)){"
-"0","  # for each unique vechile "
-"0","  for(j in seq_along(mileRange)){"
-"0","    # for each step in the miles range "
-"0","    df[i, j+4]<- calCost(initialPrice = baseCostDollars[i], distance = mileRange[j], mpg = mpg[i], fuelPrice = costPerGallonOfFuel[i])"
-"0","  }"
-"0","}"
-"0","DT::datatable(df)"

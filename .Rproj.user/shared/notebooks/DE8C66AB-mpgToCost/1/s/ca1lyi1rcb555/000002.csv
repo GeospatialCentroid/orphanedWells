@@ -1,5 +1,0 @@
-"0","# mileage range"
-"0","mileRange <- seq(from = 15000, to = 210000, by = 15000)"
-"0","# apply' function across"
-"0","costs <- lapply(mileRange, calCost, initialPrice = initialPrice, mpg = mpg, fuelPrice = fuelPrice)"
-"0","### because our function has multiple parameters we need to specific inputs within lapply. In this case we left the required input of 'distance' blank so lapply filled in that value with the values from the list."

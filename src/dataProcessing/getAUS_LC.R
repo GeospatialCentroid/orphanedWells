@@ -13,8 +13,6 @@
 #' 
 #' 
 
-landcover <- ausLC 
-gridArea <- auGrid
 
 getAUS_LC <- function(landcover, gridArea){
   
@@ -25,30 +23,32 @@ getAUS_LC <- function(landcover, gridArea){
   values <- c(1:32,99)
   
   # construct dataframe to hold all records 
-  df <- data.frame(matrix(nrow = nrow(gridArea), ncol = 1+ length(values)))
-  names(df) <- c("Id", as.character(values))
+  df <- data.frame(matrix(nrow = nrow(gridArea), ncol = 2+ length(values)))
+  names(df) <- c("Id", as.character(values), "total_land_cells")
   
   #iterate over each area and assign values 
   
-  for(i in seq_along(gridArea$Id)){
+  for(i in seq_along(gridArea$OZgrids)){
     # select feature
     t1 <- gridArea[i]
     # assgin Id 
-    df$Id[i] <- t1$Id
+    df$Id[i] <- t1$OZgrids
     # crop and mask image 
     r2 <- landcover %>% terra::crop(t1)%>%terra::mask(t1)
     # determine values 
     vals <- values(r2)
+    # drop na values 
+    ### historic datas uses 128 in stead of NA so I'm reassigning to remove
+    vals[vals == 128] <- NA
+    vals <- vals[!is.na(vals)]
     uniqueVals <- sort(unique(vals))
-    # Nan features causing some issues 
-    vals[is.nan(vals)] <- 9999
-    vals[is.na(vals)] <- 9991
     total <- length(vals)
+    df[i, "total_land_cells"] <- total
     for(j in seq_along(values)){
       code <- as.numeric(values[j])
       if(code %in% uniqueVals){
         index <- code
-        val2 <- vals[vals == index, ]
+        val2 <- vals[vals == index]
         sum1 <- length(val2)
         percentCover <- (sum1/total)*100
         df[i,as.character(index)] <- percentCover

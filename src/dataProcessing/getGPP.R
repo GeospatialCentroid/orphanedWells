@@ -10,6 +10,7 @@ getGPP <- function(gpp, gridArea){
   df <- data.frame(matrix(nrow = nrow(gridArea), ncol = 1 + length(names(gpp))))
   names(df) <- c("Id", names(gpp))
   df$Id <- gridArea$Id
+  
   # run extraction for each cell and append data
   for(i in seq_along(df$Id)){
     temp <- terra::extract(x = gpp, y = gridArea[i,]) %>%
